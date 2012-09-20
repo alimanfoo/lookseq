@@ -311,7 +311,6 @@ sub read_gff3 {
 		$chr =~ s/^.*\|// ;
 		next unless not defined $chromosome or lc $chr eq lc $chromosome ;
 		next if $type eq 'supercontig' ;
-		next if $type eq 'mRNA' or $type eq 'CDS' ; # HACK deemed unneccessary ("exon" covers it all...)
 
 		my $next = 0 ;
 		foreach my $q ( @matches ) {
@@ -325,12 +324,28 @@ sub read_gff3 {
 		$d{'chr'} = $chr unless defined $chromosome ;
 		
 		if ( $l =~ m/^ID=([^;]+)/ ) {
+			my $id = $1 ;
+			$d{'id'} = $id if $id ne '' ;
+		}
+		
+		if ( $l =~ m/.+comment=([^;]+)/ ) {
+			my $desc = $1 ;
+			$d{'comment'} = $desc if $desc ne '' ;
+		}
+		
+		if ( $l =~ m/.+Name=([^;]+)/ ) {
 			my $name = $1 ;
-			$name =~ s/^.+\|// ;
 			$d{'name'} = $name if $name ne '' ;
-		} else {
-			$l =~ m/;name=([^;]+);{0,1}/i ;
-			$d{'name'} = $1 if defined $1 and $1 ne lc $type ;
+		}
+		
+		if ( $l =~ m/.+synonym=([^;]+)/ ) {
+			my $syn = $1 ;
+			$d{'synonym'} = $syn if $syn ne '' ;
+		}
+		
+		if ( $l =~ m/.+previous_systematic_id=([^;]+)/ ) {
+			my $previous_systematic_id = $1 ;
+			$d{'previous_systematic_id'} = $previous_systematic_id if $previous_systematic_id ne '' ;
 		}
 
 		push @{$ret{$type}} , \%d ;

@@ -153,7 +153,7 @@ Track : function () {
 			var y = 2 ;
 			var col = '#79FC4E' ;
 			if ( thetype == 'gene' ) { y = 0 ; col = '#2F74D0' ; }
-			if ( thetype == 'exon' ) { y = 1 ; col = '#FF7575' ; }
+			if ( thetype == 'CDS' ) { y = 1 ; col = '#FF7575' ; }
 			y = y + y * rh ;
 			
 			$.each ( typedata , function ( k , v ) {
@@ -162,12 +162,16 @@ Track : function () {
 				var x1 = ( v.from - lookseq.from ) * tw / w ;
 				var x2 = ( v.to - lookseq.from ) * tw / w ;
 				var xw = x2 - x1 ;
-				var name = v.name ;
+				var name = v.id ;
 				if ( name === undefined ) name = '' ;
 				var hover = name ;
-				if ( hover != '' ) hover += ": \n" ;
-				hover += thetype + "; \n" + v.from + '-' + v.to ;
-				if ( v.strand !== undefined ) hover += ' (' + v.strand + ')' ;
+				if ( hover != '' ) hover += "\n" ;
+				hover += thetype + "\n" + v.from + '-' + v.to ;
+				if ( v.strand !== undefined ) hover += ' (' + v.strand + ')\n' ;
+				if ( v.previous_systematic_id !== undefined ) hover += v.previous_systematic_id + '\n' ;
+				if ( v.name !== undefined ) hover += v.name + '\n' ;
+				if ( v.synonym !== undefined ) hover += unescape(v.synonym).replace(/[+]/g, ' ') + '\n' ;
+				if ( v.comment !== undefined ) hover += unescape(v.comment).replace(/[+]/g, ' ') + '\n' ;
 				var f = parseInt(v.from) - 50 ;
 				var t = parseInt(v.to) + 50 ;
 				
@@ -177,7 +181,7 @@ Track : function () {
 				h += "<div style='left:" + Math.floor(x1) + "px;width:" + Math.floor(xw) + "px;top:" + y + "px;height:" + rh + "px;background-color:" + col + "' " ;
 				h += "title=\"" + hover.replace('"', '\'') + "\" " ;
 				h += "ondblclick='lookseq.showRegion(\""+chr+"\","+f+","+t+")' " ;
-				h += "class='annotation_marker'>" + name + "</div>" ;
+				h += "class='annotation_marker'><a href='http://www.genedb.org/gene/"+v.id+"' style='color: white'>" + name + "</div>" ;
 			} ) ;
 			
 		} ) ;
