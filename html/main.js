@@ -1012,11 +1012,11 @@ showSamples : function () {
 
 		if ( pd.desc != '' && lookseq.logged_in ) sb += "<div style='font-size:7pt'>" + pd.desc + "</div>" ;
 		
-		sb += "<table style='font-size:8pt' cellpadding=1 cellspacing=0><tr><td/>" ;
+		sb += "<table style='font-size:8pt' cellpadding=1 cellspacing=0><tr>" ;
 		$.each ( lookseq.algorithms , function ( k2 , v2 ) {
 			sb += "<td class='sample_cell'>" + v2 + "</td>" ;
 		} ) ;
-		sb += "</tr>" ;
+		sb += "<td/></tr>" ;
 		var sk = new Array() ;
 		$.each ( lookseq.samples , function (ox,sd) {
 			sk.push ( ox ) ;
@@ -1028,11 +1028,12 @@ showSamples : function () {
 			if ( undefined === lookseq.samples[ox].alg ) return ;
 			var title = '' ;
 			if ( undefined !== lookseq.samples[ox].country ) title = " title='" + lookseq.samples[ox].country + "'" ;
-			sb += "<tr><td nowrap " + title + " style='padding-right:3px;'>" + ox + "</td>" ;
+			sb += "<tr>";
 			$.each ( lookseq.algorithms , function ( k2 , v2 ) {
 				if ( undefined === lookseq.samples[ox].alg[v2] ) sb += "<td class='sample_cell'>&mdash;</td>" ;
 				else sb += "<td class='sample_cell'><input accid='"+tabid+"' type='checkbox' id='sample_cb_"+ox+"_"+v2+"' ox='"+ox+"' alg='"+v2+"' onclick='lookseq.cb_changed(this)' /></td>" ;
 			} ) ;
+			sb += "<td nowrap " + title + " style='padding-right:3px;'>" + ox + "</td>" ;
 //			sb += "<td style='text-align:center'><input type='checkbox' ox='"+ox+"' alg='som' onclick='lookseq.cb_changed(this)' /></td>" ;
 			sb += "</tr>" ;
 			has_sample = true ;
