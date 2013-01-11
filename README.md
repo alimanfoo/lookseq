@@ -45,12 +45,10 @@ cd /opt/lookseq/html
 cp config.js.demo config.js
 ```
 
-Test it works: 
-
-Go to http://lookseq.local/ click on the "Test" sample group in the
-right-hand pane, select "Sample_1" - you should see a view of a
-chromosome with a small amount of sequence data at the far
-left. Double-click to zoom in.
+To test it works, go to http://lookseq.local/ click on the "Test"
+sample group in the right-hand pane, select "Sample_1" - you should
+see a view of a chromosome with a small amount of sequence data at the
+far left. Double-click to zoom in.
 
 To configure for your data, edit /opt/lookseq/cgi-bin/config.json.
 
