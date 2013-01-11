@@ -31,7 +31,7 @@ Configure Apache virtual host:
 ```
 cp /opt/lookseq/lookseq.site /etc/apache2/sites-available/lookseq
 a2ensite lookseq
-echo "127.0.1.1 lookseq" >> /etc/hosts
+echo "127.0.1.1 lookseq.local" >> /etc/hosts
 apache2ctl configtest
 apache2ctl restart
 ```
@@ -45,7 +45,7 @@ cd /opt/lookseq/html
 cp config.js.demo config.js
 ```
 
-Test it works: http://lookseq/
+Test it works: http://lookseq.local/
 
 To configure for your data, edit /opt/lookseq/cgi-bin/config.json.
 
