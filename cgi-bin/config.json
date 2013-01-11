@@ -1,0 +1,19 @@
+{
+    "species" : {
+        "pf" : {
+            "name" : "Plasmodium falciparum" ,
+            "fasta" : "/opt/lookseq/data/ref.fa" ,
+            "gff" : "/opt/lookseq/data/ref.gff"
+        }
+    } ,
+    
+    "samples" : {
+        "Sample_1"  : { "bam" : "/opt/lookseq/data/test.bam" , "species" : "pf" , "alg" : "bwa" , "group" : "Test" } 
+    } ,
+    
+    "misc" : {
+        "tmp" : "/tmp" ,
+        "render_command" : "/opt/lookseq/bam_c/render_image"
+    }
+    
+}
