@@ -29,8 +29,8 @@ chown -R www-data:www-data /opt/lookseq
 Configure Apache virtual host:
 
 ```
-cp /opt/lookseq/lookseq.site /etc/apache2/sites-available/lookseq
-a2ensite lookseq
+cp /opt/lookseq/lookseq.local /etc/apache2/sites-available/
+a2ensite lookseq.local
 echo "127.0.1.1 lookseq.local" >> /etc/hosts
 apache2ctl configtest
 apache2ctl restart
