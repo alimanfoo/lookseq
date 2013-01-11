@@ -36,6 +36,15 @@ apache2ctl configtest
 apache2ctl restart
 ```
 
+Enable demo configuration:
+
+```
+cd /opt/lookseq/cgi-bin
+cp config.json.demo config.json
+cd /opt/lookseq/html
+cp config.js.demo config.js
+```
+
 Test it works: http://lookseq/
 
 To configure for your data, edit /opt/lookseq/cgi-bin/config.json.
