@@ -1,8 +1,8 @@
-lookseq
+LookSeq
 =======
 
-This is a fork of Magnus Manske's lookseq application. See
-http://sourceforge.net/projects/lookseq/ for the truth.
+This is a fork of Magnus Manske's LookSeq web application for viewing
+BAM files. See http://sourceforge.net/projects/lookseq/ for the truth.
 
 Local Installation
 ------------------
